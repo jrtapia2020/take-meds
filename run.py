@@ -1,19 +1,44 @@
 #!/usr/bin/env python3
 
-# TODO: Add argument parser and command line options
-# TODO: Make reminder callable along with other future commands
+# TODO: Make commands callable
 
-"""
-List of future commands in run.py for project:
-- check: checks to see if program ran within the last 24 hours
-- next: checks to see how long until the next message will be sent
-"""
-
-from reminder import reminder
+import argparse
+from scripts.reminder import scheduled, instant, check, next, stop
 
 
 def main() -> None:
-    reminder()
+    scheduled()
+    parser = create_parser()
+
+
+def create_parser() -> argparse.ArgumentParser:
+    # TODO: Refactor! Maybe make this into a different helper function in a separate file?
+    parser = argparse.ArgumentParser(prog='Sends reminder text to designated phone number')
+    parser.add_argument('-r', '--remind',
+                        help='sends immediate reminder text',
+                        action='store_true')
+    parser.add_argument('-c', '--check',
+                        help='prints out when last message was sent',
+                        action='store_true')
+    parser.add_argument('-n', '--next',
+                        help='time until the next text message is sent',
+                        action='store_true')
+    parser.add_argument('-s', '--stop',
+                        help='stops program from sending future texts',
+                        action='store_true')
+
+    args = parser.parse_args()
+
+    if args.remind:
+        instant()
+    elif args.check:
+        print('check')
+    elif args.next:
+        print('next')
+    elif args.stop:
+        print('stop')
+
+    return parser
 
 
 if __name__ == '__main__':

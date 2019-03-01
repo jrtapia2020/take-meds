@@ -1,8 +1,8 @@
 from twilio.rest import Client
 
-# Using Twilio service to send test SMS text messages to myself
+# Using Twilio service to send SMS text to targeted phone numbers
 
-# TODO: Change to my wife's phone number
+# TODO: Add personal data in commented sections
 
 # Your Account Sid and Auth Token from twilio.com/console
 account_sid = ''    # Individual sid
@@ -13,7 +13,7 @@ message = client.messages \
                 .create(
                      body="This test message works!",
                      from_='',  # Twilio phone number
-                     to=''      # Desired destination
+                     to=''      # Recipient phone number
                  )
 
 print('Message sent successfully. SID: ' + message.sid)
