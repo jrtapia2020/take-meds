@@ -16,4 +16,4 @@ message = client.messages \
                      to=''      # Desired destination
                  )
 
-print(message.sid)
+print('Message sent successfully. SID: ' + message.sid)
