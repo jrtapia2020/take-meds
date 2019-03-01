@@ -3,7 +3,7 @@
 # TODO: Make commands callable
 
 import argparse
-from scripts.reminder import scheduled, instant, check, next, stop
+from scripts.reminder import scheduled, instant, check, upcoming, stop
 
 
 def main() -> None:
@@ -32,11 +32,11 @@ def create_parser() -> argparse.ArgumentParser:
     if args.remind:
         instant()
     elif args.check:
-        print('check')
+        check()
     elif args.next:
-        print('next')
+        upcoming()
     elif args.stop:
-        print('stop')
+        stop()
 
     return parser
 

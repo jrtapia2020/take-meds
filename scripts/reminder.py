@@ -26,7 +26,7 @@ def check():
     return x
 
 
-def next():
+def upcoming():
     y = 'time until next message'
     return y
 
