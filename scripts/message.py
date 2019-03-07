@@ -4,16 +4,17 @@ from twilio.rest import Client
 
 # TODO: Add personal data in commented sections
 
-# Your Account Sid and Auth Token from twilio.com/console
-account_sid = ''    # Individual sid
-auth_token = ''     # Individual token
-client = Client(account_sid, auth_token)
 
-message = client.messages \
-                .create(
-                     body="This test message works!",
-                     from_='',  # Twilio phone number
-                     to=''      # Recipient phone number
-                 )
+def send_text():
+    # Your Account Sid and Auth Token from twilio.com/console
+    account_sid = ''    # Individual sid
+    auth_token = ''     # Individual token
+    client = Client(account_sid, auth_token)
 
-print('Message sent successfully. SID: ' + message.sid)
+    message = client.messages \
+                    .create(
+                         body='This test message works!',
+                         from_='',  # Twilio phone number
+                         to=''      # Recipient phone number
+                     )
+    print('Message sent successfully. SID: ' + message.sid)
