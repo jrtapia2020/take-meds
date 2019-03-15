@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 
 # TODO: Make commands callable
-
 import argparse
 from scripts.reminder import scheduled, instant, check, upcoming, stop
 
 
 def main() -> None:
-    scheduled()
-
     parser = create_parser()
     args = parser.parse_args()
 
@@ -20,6 +17,8 @@ def main() -> None:
         upcoming()
     elif args.stop:
         stop()
+    else:
+        scheduled()
 
 
 def create_parser() -> argparse.ArgumentParser:

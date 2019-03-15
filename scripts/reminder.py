@@ -1,3 +1,5 @@
+# TODO: Edit check, upcoming, stop commands
+
 from scripts import message
 from crontab import CronTab
 
