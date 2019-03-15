@@ -7,7 +7,7 @@ from scripts.reminder import scheduled, instant, check, upcoming, stop
 
 
 def main() -> None:
-    # scheduled()
+    scheduled()
 
     parser = create_parser()
     args = parser.parse_args()
@@ -23,7 +23,6 @@ def main() -> None:
 
 
 def create_parser() -> argparse.ArgumentParser:
-    # TODO: Refactor... more maybe?
     parser = argparse.ArgumentParser(prog='Sends reminder text to designated phone number')
     parser.add_argument('-r', '--remind',
                         help='sends immediate reminder text',
@@ -37,7 +36,6 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument('-s', '--stop',
                         help='stops program from sending future texts',
                         action='store_true')
-
     return parser
 
 

@@ -1,24 +1,16 @@
-import time
-import webbrowser
-
-# Simple repeating reminder to serve as framework for text reminder
-
-# TODO: Change to be able to call message.py rather than opening a web link
-# TODO: Implement cron jobs as a replacement for scheduled loop
-# TODO: Allow other command line prompts to be added while scheduled function is running
+from scripts import message
+from crontab import CronTab
 
 
-def scheduled() -> None:    # Opens up 'Reminder' by The Weeknd every day for a year
-    for i in range(1000):
-        print('This program ran on ' + time.ctime())
-        webbrowser.open('https://www.youtube.com/watch?v=a40tAP5MC6M')
-        time.sleep(86400)
+# ------------------------------
+# Commands for run.py
+# ------------------------------
+def scheduled() -> None:
+    message.send_text()
 
 
 def instant() -> None:
-    print('This program ran on ' + time.ctime())
-    webbrowser.open('https://www.youtube.com/watch?v=a40tAP5MC6M')
-    # TODO: Ensure it gets back to normal schedule
+    message.send_text()
 
 
 def check():
@@ -34,3 +26,14 @@ def upcoming():
 def stop() -> None:
     z = 'stops all future messages until started again'
     print(z)
+
+
+# ------------------------------
+# Cron job schedule
+# ------------------------------
+cron = CronTab(user=True)                     # change below to personal file location
+job = cron.new(command='/usr/local/bin/python3.7 /Users/raul/Desktop/take-meds/run.py')
+job.hour.on(12)
+job.minute.on(0)
+# cron.write()
+# uncommenting line above will write to crontab when reminder.py is ran
