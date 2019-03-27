@@ -1,6 +1,4 @@
-# TODO: Add log for when texts are sent
-
-from scripts import message
+from scripts import message, logger
 from crontab import CronTab
 
 
@@ -8,11 +6,13 @@ from crontab import CronTab
 # Commands for run.py
 # ------------------------------
 def scheduled() -> None:
-    message.send_text()
+    message_sid = message.send_text()
+    logger.log(message_sid)
 
 
 def instant() -> None:
-    message.send_text()
+    message_sid = message.send_text()
+    logger.log(message_sid)
 
 
 def check():

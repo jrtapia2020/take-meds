@@ -16,3 +16,4 @@ def send_text():
                          to=''      # Recipient phone number
                      )
     print(f'Message sent successfully. SID: {message.sid}')
+    return message.sid
