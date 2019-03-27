@@ -11,8 +11,8 @@ def send_text():
 
     message = client.messages \
                     .create(
-                         body='This test message works!=',
+                         body='',
                          from_='',  # Twilio phone number
                          to=''      # Recipient phone number
                      )
-    print(f'Message sent successfully. SID: {message.sid}')
+    return print(f'Message sent successfully. SID: {message.sid}')
