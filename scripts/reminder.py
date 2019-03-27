@@ -1,4 +1,4 @@
-# TODO: Edit check and upcoming commands
+# TODO: Add log for when texts are sent
 
 from scripts import message
 from crontab import CronTab
@@ -19,16 +19,18 @@ def check():
     """
     Displays the last time the scheduled message was sent.
     """
-    x = 'time last ran'
-    return x
+    schedule = job.schedule()
+    prev = schedule.get_prev()
+    print(prev)
 
 
 def upcoming():
     """
-    Displays the amount of time until the next scheduled message will be sent.
+    Displays when the next scheduled message will be sent.
     """
-    y = 'time until next message'
-    return y
+    schedule = job.schedule()
+    next = schedule.get_next()
+    print(f'The next scheduled message will be sent on: {next}')
 
 
 def enable() -> None:
@@ -53,8 +55,8 @@ def disable() -> None:
 cron = CronTab(user=True)                     # change below to personal file location
 job = cron.new(command='/usr/local/bin/python3.7 /Users/raul/Desktop/take-meds/run.py')
 # set time below to desired time of running
-# uncommenting lines below will write to crontab when reminder.py is ran
-# job.hour.on(18)
-# job.minute.on(0)
+# uncommenting line below will write to crontab when reminder.py is ran
+job.hour.on(18)
+job.minute.on(0)
 # cron.write()
 

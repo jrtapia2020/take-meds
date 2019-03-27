@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-# TODO: Make commands callable
 import argparse
-from scripts.reminder import scheduled, instant, check, upcoming, enable, disable
+from scripts.reminder import *
 
 
 def main() -> None:
@@ -29,10 +28,10 @@ def create_parser() -> argparse.ArgumentParser:
                         help='sends immediate reminder text',
                         action='store_true')
     parser.add_argument('-c', '--check',
-                        help='prints out when last message was sent',
+                        help='prints out when last text message was sent',
                         action='store_true')
     parser.add_argument('-n', '--next',
-                        help='time until the next text message is sent',
+                        help='time the next text message is sent',
                         action='store_true')
     parser.add_argument('-e', '--enable',
                         help='starts program to send regularly scheduled texts',

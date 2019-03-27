@@ -15,4 +15,4 @@ def send_text():
                          from_='',  # Twilio phone number
                          to=''      # Recipient phone number
                      )
-    return print(f'Message sent successfully. SID: {message.sid}')
+    print(f'Message sent successfully. SID: {message.sid}')
